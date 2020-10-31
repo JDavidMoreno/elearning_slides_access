@@ -1,0 +1,52 @@
+
+
+/*.box {*/
+/*        align-self: flex-end;*/
+/*        animation-duration: 2s;*/
+/*        animation-iteration-count: infinite;*/
+/*        background-color: #F44336;*/
+/*        height: 200px;*/
+/*        margin: 0 auto 0 auto;*/
+/*        transform-origin: bottom;*/
+/*        width: 200px;*/
+/*    }*/
+/*    .bounce-1 {*/
+/*        animation-name: bounce-1;*/
+/*        animation-timing-function: linear;*/
+/*    }*/
+
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+.slide_access_js_slide_request {
+    display: block;
+    color: #ffcd73 !important;
+    cursor: pointer;
+    animation-name: bounce;
+    animation-timing-function: linear;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+}
+
+.slide_access_js_slide_request:hover {
+    color: orange !important;
+}
+
+.modal-content {
+    border-radius: 0.75rem !important;
+}
+
+.elearning_slides_access_dialog {
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+
+.slide_access_blocking_icons {
+    color: #e3e3e3 !important;
+}

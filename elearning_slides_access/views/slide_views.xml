@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    Just in case we decide to manage also access by individual content-->
+<!--    <record id="view_slide_slide_form_extended" model="ir.ui.view">-->
+<!--        <field name="name">slide.slide.form.extended</field>-->
+<!--        <field name="model">slide.slide</field>-->
+<!--        <field name="inherit_id" ref="website_slides.view_slide_slide_form" />-->
+<!--        <field name="arch" type="xml">-->
+<!--            <page name="statistics" position="after">-->
+<!--                <page name="slide_access" string="Content Access">-->
+<!--                    <field name="slide_access_ids" />-->
+<!--                </page>-->
+<!--            </page>-->
+<!--        </field>-->
+<!--    </record>-->
+
+      <record id="view_slide_slide_access_form" model="ir.ui.view">
+        <field name="name">view.slide.slide.access.form</field>
+        <field name="model">slide.slide</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Section"/>
+                        <h1><field name="name" readonly="1" /></h1>
+                    </div>
+                    <field name="slide_access_ids" />
+                </sheet>
+                <footer>
+                    <button string="Save" class="btn-primary" special="save" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="slide_channel_access_menu" model="ir.ui.view">
+        <field name="name">slide.channel.access.menu</field>
+        <field name="model">slide.channel</field>
+        <field name="inherit_id" ref="website_slides.view_slide_channel_form" />
+        <field name="arch" type="xml">
+            <field name="is_category" position="after">
+                <field name="is_allowed_access" />
+                <button id="slide_manage_access" icon="fa-key" class="oe_edit_only" name="action_manage_access" type="object" attrs="{'invisible': [('is_category', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

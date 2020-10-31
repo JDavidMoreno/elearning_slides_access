@@ -1,0 +1,6 @@
+- Update key when clicked, so user knows the request was sent. Add Clock icon for this same reason
+- Send email to course administrator besides the creation of the activity
+- Send email to student whet their request has been accepted
+- Send the request before having to click the pink button
+- show clock also in the front-end when requesting for the student
+- Do all the same for the full-screen part

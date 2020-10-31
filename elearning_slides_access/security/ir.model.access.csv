@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_elearning_slides_access_slide_access,elearning_slides_access.slide_access,model_slide_access,,1,0,0,0
+access_elearning_slides_access_slide_access_officer,elearning_slides_access.slide_access.officer,model_slide_access,website_slides.group_website_slides_officer,1,1,1,0
+access_elearning_slides_access_slide_access_manager,elearning_slides_access.slide_access.manager,model_slide_access,website_slides.group_website_slides_manager,1,1,1,1

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_slide_access_tree" model="ir.ui.view">
+        <field name="name">view.slide.access.tree</field>
+        <field name="model">slide.access</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="create_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_slide_access_form" model="ir.ui.view">
+        <field name="name">view.slide.access.form</field>
+        <field name="model">slide.access</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="channel_id" />
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="create_date"/>
+                        </group>
+                        <group>
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_slide_access_kanban" model="ir.ui.view">
+        <field name="name">view.slide.access.kanban</field>
+        <field name="model">slide.access</field>
+        <field name="arch" type="xml">
+            <kanban string="Request Access" class="oe_background_grey" sample="1">
+                <field name="channel_id"/>
+                <field name="slide_id"/>
+                <field name="name"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill oe_kanban_global_click">
+                            <t t-set="placeholder" t-value="'/web/image/res.partner/' + record.name.raw_value + '/image_128'" />
+                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('res.partner', 'image_128', record.name.raw_value, placeholder)}')" />
+                            <div class="o_kanban_image d-md-none" t-attf-style="background-image:url('#{kanban_image('res.partner', 'image_128', record.name.raw_value, placeholder)}')" />
+
+                            <div class="oe_kanban_details d-flex flex-column">
+                                <div class="o_kanban_content">
+                                   <strong>
+                                       <h4 ><field name="slide_id"/></h4>
+                                   </strong>
+                                    <h6 class="o_kanban_record_title"><field name="channel_id" /></h6>
+                                    <br/><p class="o_kanban_record_title"><field name="name" /></p>
+                                </div>
+                            </div>
+                            <div style="vertical-align: center;">
+                                <i t-attf-class="fa #{record.state.raw_value == 'requested' and 'fa-clock-o' or 'fa-check'}" style="font-size: 1.5rem; color: #777777"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>

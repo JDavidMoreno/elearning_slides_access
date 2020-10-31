@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates >
+
+    <t t-name="elearning.request.access">
+        <div>
+            <div class="">
+                <h4 class="mb-3">Access Requested!</h4>
+                <img src="/elearning_slides_access/static/src/img/olee.png" alt="Great! You are progressing" width="100px" height="100px"/>
+                <p class="mt-3">Now is time for the Administrator of the course to review your request and allow you to continue. Be aware that this could take some time.</p>
+                <a role="button" class="btn btn-primary btn-fill-primary btn-block elearning_slides_access_close_button">
+                    <span style="color: white">Ok</span>
+                </a>
+            </div>
+        </div>
+    </t>
+
+</templates>
