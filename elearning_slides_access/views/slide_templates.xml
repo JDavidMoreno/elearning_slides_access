@@ -21,7 +21,8 @@
         </xpath>
         <xpath expr="//li/a" position="after">
             <t t-set="access_icon" t-value="
-                category and not current_slide.channel_id.can_publish and category.id == can_request_access_categ_id and 'fa-key' or
+                category and not current_slide.channel_id.can_publish and category.id == section_can_request_id and 'fa-key' or
+                category and not current_slide.channel_id.can_publish and category.id in section_access_requested_ids and 'fa-clock-o' or
                 category and (current_slide.channel_id.can_publish or category.id in open_category_ids) and 'fa-unlock' or
                 'fa-lock'" />
             <a t-if="access_icon" role="button" t-att-class="'px-3 py-2 d-inline-block ' + ('slide_access_js_slide_request' if access_icon == 'fa-key' else '')" t-att-data-category-id="category.id">
@@ -41,7 +42,8 @@
         <xpath expr="//div[@t-att-data-category-id='category_id']" position="inside">
             <t t-set="access_icon"
                t-value="
-                    channel.is_member and not channel.can_publish and category_id and category_id == can_request_access_categ_id and 'fa-key' or
+                    channel.is_member and not channel.can_publish and category_id and category_id == section_can_request_id and 'fa-key' or
+                    channel.is_member and not channel.can_publish and category_id and category_id in section_access_requested_ids and 'fa-clock-o' or
                     channel.is_member and category_id and channel.can_publish and 'fa-unlock' or
                     category_id and category_id in open_category_ids and 'fa-unlock' or
                     category_id and 'fa-lock' or

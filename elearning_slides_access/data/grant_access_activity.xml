@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="mt_automatic_mailing" model="mail.message.subtype">
+        <field name="name">Automatic Mailing</field>
+        <field name="default" eval="False"/>
+        <field name="sequence" eval="90"/>
+        <field name="internal" eval="False"/>
+        <field name="hidden" eval="False"/>
+        <field name="description">Just used by Automatic Mailing actions.</field>
+    </record>
+
+    <record id="mail_activity_grant_access_content" model="mail.activity.type">
+        <field name="name">Grant Access to Content</field>
+        <field name="icon">fa-clock-o</field>
+        <field name="res_model_id" ref="elearning_slides_access.model_slide_access"/>
+    </record>
+
+</odoo>

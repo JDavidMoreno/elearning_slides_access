@@ -13,6 +13,8 @@
     'depends': ['mail', 'web', 'survey', 'website_slides'],
     'data': [
         'security/ir.model.access.csv',
+        'data/grant_access_template.xml',
+        'data/grant_access_activity.xml',
         'views/assets.xml',
         'views/slide_access.xml',
         'views/slide_views.xml',

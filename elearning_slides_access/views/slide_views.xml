@@ -44,6 +44,9 @@
                 <field name="is_allowed_access" />
                 <button id="slide_manage_access" icon="fa-key" class="oe_edit_only" name="action_manage_access" type="object" attrs="{'invisible': [('is_category', '=', False)]}"/>
             </field>
+            <field name="share_template_id" position="after">
+                <field name="grant_access_template_id" />
+            </field>
         </field>
     </record>
 

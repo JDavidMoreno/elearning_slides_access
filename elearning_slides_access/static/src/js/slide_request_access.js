@@ -24,32 +24,32 @@ odoo.define('elearning_slides_access.slide_request_access', function (require) {
               text: _t('Discard'),
               close: true
           }],
-          renderHeader: true,
+          renderHeader: false,
           renderFooter: false,
           technical: false,
           dialogClass: 'elearning_slides_access_dialog',
       });
+      this.keyButton = options.keyButton;
+      this.parent = parent;
 
-      this.categoryId = options.categoryId;
       this._super(parent, options);
     },
 
     _onCloseDialog: function (ev) {
         ev.stopPropagation();
-        var self = this;
-        this._rpc({
-          model: 'slide.access',
-          method: 'request_access',
-          args: [this.categoryId]
-        }).then(function(res) {
-            var a = 33;
-            cosole.log(res);
-        });
+        var keyIcon = this.keyButton.children('i.fa-key');
+        if (keyIcon) {
+          this.keyButton.removeClass('slide_access_js_slide_request').addClass('slide_access_blocking_icons');
+          keyIcon.removeClass('fa-key').addClass('fa-clock-o');
+        }
         this.close();
     },
 
     close: function () {
+      this.parent.destroy();
       this.destroy();
+
+      // window.location.reload();
     }
   });
 
@@ -60,13 +60,27 @@ odoo.define('elearning_slides_access.slide_request_access', function (require) {
         'click': '_onRequestAccess',
     },
 
-    _openDialog: function (categoryId) {
-        return new SlideAccessDialog(this, {categoryId: categoryId}).open();
+    _openDialog: function (keyButton) {
+      return new SlideAccessDialog(this, {keyButton: keyButton}).open();
     },
 
     _onRequestAccess: function (ev) {
       ev.preventDefault();
-      this._openDialog($(ev.currentTarget).data('categoryId'));
+      var keyButton = $(ev.currentTarget);
+      var self = this;
+      this._rpc({
+        model: 'slide.access',
+        method: 'request_access',
+        args: [keyButton.data('categoryId')]
+      }).then(function(res) {
+          var a = 33;
+          console.log(res);
+          self._openDialog(keyButton);
+      }).catch(function (reason){
+        var error = reason.message;
+        console.warn('Failed to send a Course access request');
+        throw error;
+    });
     },
   });
 

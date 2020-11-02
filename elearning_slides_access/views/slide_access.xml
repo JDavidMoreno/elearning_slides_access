@@ -18,6 +18,9 @@
         <field name="model">slide.access</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="button_grant_access" string="Grant Access" states="requested" type="object" class="oe_highlight" groups="website_slides.group_website_slides_officer"/>
+                </header>
                 <sheet>
                     <field name="channel_id" />
                     <group>

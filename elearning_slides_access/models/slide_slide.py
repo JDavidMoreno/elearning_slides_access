@@ -9,15 +9,18 @@ class SlideSlide(models.Model):
     slide_access_ids = fields.One2many('slide.access', 'slide_id', string="Allowed Access")
     is_allowed_access = fields.Boolean(compute="_compute_is_allowed_access")
 
-    def _user_has_section_access(self):
+    def _user_section_access(self):
         self.ensure_one()
         reference_slide_id = self.is_category and self or self.category_id and self.category_id or None
         if reference_slide_id:
+            if self.env.user.partner_id in reference_slide_id.slide_access_ids.mapped('name'):
+                current_access_id = reference_slide_id.slide_access_ids.filtered(lambda r: r.name == self.env.user.partner_id)
+                if current_access_id:
+                    return current_access_id.state
             # This is granted when the section is the first of the course or whether the user has access to that section
-            if self.env.user.partner_id in reference_slide_id.slide_access_ids.mapped('name') or reference_slide_id == reference_slide_id.channel_id.first_section:
-                return True
-            return False
-        return True
+            elif reference_slide_id == reference_slide_id.channel_id.first_section:
+                return 'first'
+        return None
 
     # Used to show the key at the moment when the user has completed all slides of a section
     def is_section_ready(self):
@@ -43,7 +46,7 @@ class SlideSlide(models.Model):
 
     def _compute_is_allowed_access(self):
         for slide_id in self:
-            slide_id.is_allowed_access = slide_id._user_has_section_access()
+            slide_id.is_allowed_access = bool(slide_id._user_section_access())
 
     def action_manage_access(self):
         self.ensure_one()

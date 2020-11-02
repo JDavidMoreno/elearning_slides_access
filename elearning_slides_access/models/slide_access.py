@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, tools, _
+from odoo import api, fields, models, tools, _, SUPERUSER_ID
 from odoo.exceptions import AccessError
 
 
@@ -35,7 +35,7 @@ class SlideAccess(models.Model):
                     if res:
                         note = _("<p>A new access request from {} has been received for the section {}.</p>".format(student_id.name, slide_id.name))
                         self.env['mail.activity'].create({
-                            'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+                            'activity_type_id': self.env.ref('elearning_slides_access.mail_activity_grant_access_content').id,
                             'summary': 'Access Request for Course {}.'.format(slide_id.channel_id.name),
                             'note': note,
                             'user_id': slide_id.channel_id.user_id and slide_id.channel_id.user_id.id or False,
@@ -46,6 +46,22 @@ class SlideAccess(models.Model):
                         })
                     return res
         return super(SlideAccess, self).create(values)
+
+    def button_grant_access(self):
+        if self.ensure_one() and self.exists():
+            self.state = 'allowed'
+            template_id = self.channel_id.grant_access_template_id and self.channel_id.grant_access_template_id or self.env.ref(
+                'elearning_slides_access.slide_template_grant_access', raise_if_not_found=False)
+            self.activity_ids.filtered(lambda r: r.activity_type_id == self.env.ref('elearning_slides_access.mail_activity_grant_access_content')).action_done()
+            if template_id:
+                post_params = dict(
+                    template_id=template_id.id,
+                    message_type='comment',
+                    subtype_id=self.env.ref('mail.mt_note').id,
+                    email_layout_xmlid='mail.mail_notification_light',
+                    partner_ids=[(6, False, [self.name.id])]
+                )
+                self.with_context(lang=self.name.lang).message_post_with_template(**post_params)
 
     @api.model
     def request_access(self, slide_id):
