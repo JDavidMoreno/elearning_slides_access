@@ -21,7 +21,7 @@
     100% { transform: translateY(0); }
 }
 
-.slide_access_js_slide_request {
+.slide_access_js_slide_request, .slide_access_js_slide_request_full {
     display: block;
     color: #ffcd73 !important;
     cursor: pointer;
@@ -32,7 +32,7 @@
     transform-origin: bottom;
 }
 
-.slide_access_js_slide_request:hover {
+.slide_access_js_slide_request:hover, .slide_access_js_slide_request_full:hover {
     color: orange !important;
 }
 

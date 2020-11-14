@@ -25,7 +25,7 @@
                 category and not current_slide.channel_id.can_publish and category.id in section_access_requested_ids and 'fa-clock-o' or
                 category and (current_slide.channel_id.can_publish or category.id in open_category_ids) and 'fa-unlock' or
                 'fa-lock'" />
-            <a t-if="access_icon" role="button" t-att-class="'px-3 py-2 d-inline-block ' + ('slide_access_js_slide_request' if access_icon == 'fa-key' else '')" t-att-data-category-id="category.id">
+            <a t-if="access_icon" role="button" t-att-class="'px-3 py-2 d-inline-block ' + ('slide_access_js_slide_request_full' if access_icon == 'fa-key' else '')" t-att-data-category-id="category.id">
                 <i t-attf-class="fa #{access_icon} mx-1" style="font-size: 1.2rem"/> <span class="d-none d-md-inline-block"></span>
             </a>
         </xpath>

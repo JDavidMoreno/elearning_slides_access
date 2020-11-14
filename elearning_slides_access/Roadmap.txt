@@ -1,2 +1,0 @@
-- Why need doulbe click on access?
-- message requesting access is no uncomprehensible

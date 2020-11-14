@@ -68,10 +68,11 @@ class SlideAccess(models.Model):
         if self.env.user.partner_id and slide_id:
             slide_id = self.env['slide.slide'].browse(slide_id)
             if slide_id and slide_id.is_category:
-                slide_acces_id = self.sudo().create([{
+                slide_acces_id = self.with_user(SUPERUSER_ID).create([{
                     'name': self.env.user.partner_id.id,
                     'slide_id': slide_id.id,
                     'state': 'requested'
                 }])
-                if slide_acces_id: return True
+                if slide_acces_id:
+                    return True
         return False
