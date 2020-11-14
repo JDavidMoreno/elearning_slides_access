@@ -34,6 +34,6 @@ class WebsiteSaleSlides(WebsiteSlides):
                 sitemap=True)
     def slide_view(self, slide, **kwargs):
         res = super(WebsiteSaleSlides, self).slide_view(slide, **kwargs)
-        if not slide._user_section_access():
+        if not slide._user_section_access() and not slide.is_preview:
             raise werkzeug.exceptions.Forbidden()
         return res

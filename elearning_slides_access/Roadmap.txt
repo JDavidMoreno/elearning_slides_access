@@ -1,1 +1,2 @@
-- Do all the same for the full-screen part
+- Why need doulbe click on access?
+- message requesting access is no uncomprehensible
