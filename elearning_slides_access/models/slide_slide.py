@@ -27,7 +27,7 @@ class SlideSlide(models.Model):
         reference_slide_id = self.is_category and self or self.category_id and self.category_id or None
         if reference_slide_id:
             for slide_id in reference_slide_id.slide_ids:
-                if not slide_id.user_membership_id: return 0
+                if not slide_id.user_membership_id or slide_id.user_membership_id and not slide_id.user_membership_id.completed: return 0
             else:
                 next_categ_id = next(iter(
                     reference_slide_id.channel_id.slide_category_ids.filtered(lambda r: r.sequence > self.category_id.sequence).sorted(

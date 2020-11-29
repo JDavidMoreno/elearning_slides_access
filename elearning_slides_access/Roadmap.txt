@@ -1,0 +1,4 @@
+Don't make it work clicking on Clock icon
+Button Continue after finish Test
+
+There is no way with 'Continue' in finish dialog!!!!

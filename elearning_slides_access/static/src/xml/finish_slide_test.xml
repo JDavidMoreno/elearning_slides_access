@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates  xml:space="preserve">
+
+    <t t-inherit="slide.slide.quiz.finish" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('o_wslides_quiz_modal_btn')]" position="replace">
+            <button type="button" class="btn btn-light border o_wslides_quiz_modal_btn">Continue <i class="fa fa-chevron-right"/></button>
+        </xpath>
+    </t>
+
+</templates>
