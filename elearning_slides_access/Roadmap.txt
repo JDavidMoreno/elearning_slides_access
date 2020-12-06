@@ -1,4 +1,11 @@
-Don't make it work clicking on Clock icon
-Button Continue after finish Test
+There are a few things to improve here:
 
-There is no way with 'Continue' in finish dialog!!!!
+- Next button at the end of a Test completion should exists, and should decide whether to show Next or Close depending if
+ next slide is accessible or not. For the moment it just shows always 'Close'
+
+ - Continue button at the end of test in not-fullscreen mode should follow a similar logic as below
+
+ - Set Done in not full screen also should follow the same logic
+
+
+ And I think, this is all ...

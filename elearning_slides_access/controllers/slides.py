@@ -39,6 +39,7 @@ class WebsiteSaleSlides(WebsiteSlides):
         return res
 
     # TODO: Just Improve this. Make Set Done to show next slide when the user has permissions
+    # This is making the after Test modal to show End Course in ful screen
     @http.route('/slides/slide/<model("slide.slide"):slide>/set_completed', website=True, type="http", auth="user")
     def slide_set_completed_and_redirect(self, slide, next_slide_id=None):
         self._set_completed_slide(slide)

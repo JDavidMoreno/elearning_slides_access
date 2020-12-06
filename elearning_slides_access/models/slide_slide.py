@@ -13,7 +13,9 @@ class SlideSlide(models.Model):
         self.ensure_one()
         reference_slide_id = self.is_category and self or self.category_id and self.category_id or None
         if reference_slide_id:
-            if self.env.user.partner_id in reference_slide_id.slide_access_ids.mapped('name'):
+            if reference_slide_id.channel_id.user_id == self.env.user or self.env.user.has_group('website_slides.group_website_slides_manager') or self.env.user._is_admin():
+                return 'allowed'
+            elif self.env.user.partner_id in reference_slide_id.slide_access_ids.mapped('name'):
                 current_access_id = reference_slide_id.slide_access_ids.filtered(lambda r: r.name == self.env.user.partner_id)
                 if current_access_id:
                     return current_access_id.state

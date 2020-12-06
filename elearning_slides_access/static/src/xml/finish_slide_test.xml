@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates  xml:space="preserve">
 
-    <t t-inherit="slide.slide.quiz.finish" t-inherit-mode="extension">
-        <xpath expr="//button[hasclass('o_wslides_quiz_modal_btn')]" position="replace">
-            <button type="button" class="btn btn-light border o_wslides_quiz_modal_btn">Continue <i class="fa fa-chevron-right"/></button>
-        </xpath>
+    <t t-extend="slide.slide.quiz.finish">
+        <t t-jquery=".o_wslides_quiz_modal_dismiss" t-operation="replace">
+            <div class="o_wslides_quiz_modal_dismiss align-self-end d-none">
+                <t t-if="widget.quiz.rankProgress.level_up">
+                    <a type="button" target="_blank" t-attf-href="/profile/user/#{widget.userId}" class="btn btn-light border">Check Profile</a>
+                </t>
+                <button type="button" class="btn btn-light border o_wslides_quiz_modal_btn">Close <i class="fa fa-chevron-right"/></button>
+            </div>
+        </t>
     </t>
 
 </templates>

@@ -46,8 +46,6 @@ odoo.define('elearning_slides_access.fullscreen', function (require) {
       this._openRequestDialog(keyButton);
     },
 
-    // TODO: For the momemt this will change the icon to the key and enable the pop-up, in the future
-    // it should just notify that the request was sent
     _showKey: function (categ_id) {
       var next_section = $(`a[data-category-id=${categ_id}]`);
       next_section.addClass('slide_access_js_slide_request_full');
