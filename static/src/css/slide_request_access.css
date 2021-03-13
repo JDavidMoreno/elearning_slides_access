@@ -46,7 +46,11 @@
     text-align: center;
 }
 
-
 .slide_access_blocking_icons {
     color: #e3e3e3 !important;
+}
+
+.o_wslides_gradient {
+    background-image: url("/elearning_slides_access/static/src/img/default-slides.jpeg");
+    background-size: cover;
 }
