@@ -47,9 +47,9 @@ From the eLearning application, start creating a new Course and add some Section
 
 Then, when one of the students will finish with the first section, a golden jumping key will appear for him/her. Clicking that key will send a request to the course's manager in the form of a Activity. The Course's resnponsible could then accept the access to the content
 
-![backend configuration](https://github.com/JDavidMoreno/elearning_slides_access/blob/master/.github/images/request.png)
+![request 1](https://github.com/JDavidMoreno/elearning_slides_access/blob/master/.github/images/request.png)
 
-![backend configuration](https://github.com/JDavidMoreno/elearning_slides_access/blob/master/.github/images/request-2.png)
+![request 2](https://github.com/JDavidMoreno/elearning_slides_access/blob/master/.github/images/resquest-2.png)
 
 ## License
 
