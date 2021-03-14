@@ -3,7 +3,7 @@
   <h4>Allow or restrict access to specific contents inside an online-course.</h4>
   <br>
   <p>
-    <a href="https://github.com/JDavidMoreno/month_year_widget/blob/main/LICENSE">
+    <a href="https://github.com/JDavidMoreno/month_year_widget/blob/master/LICENSE">
         <img alt="license" src="https://img.shields.io/badge/license-MIT-green" />
     </a>
     <img alt="python version" src="https://img.shields.io/badge/python-3.5 | 3.6 | 3.7 | 3.8 | 3.9 -blue" />
@@ -16,7 +16,7 @@
 <div align="center">
   <table>
     <tr>
-      <td><img alt="example field just months-years" src="https://github.com/JDavidMoreno/elearning_slides_access/blob/main/.github/images/ui.png" /></td>
+      <td><img alt="example field just months-years" src="https://github.com/JDavidMoreno/elearning_slides_access/blob/master/.github/images/ui.png" /></td>
     </tr>
   </table>
 </div>
@@ -43,13 +43,13 @@ Move this module to your addons folder, and restart your Odoo server. While in d
 ## Usage
 From the eLearning application, start creating a new Course and add some Sections and Content to it. After saving, you can clikc the little key icon beside the section to decide who can see the content under that section.
 
-![backend configuration](https://github.com/JDavidMoreno/elearning_slides_access/blob/main/.github/images/config.png)
+![backend configuration](https://github.com/JDavidMoreno/elearning_slides_access/blob/master/.github/images/config.png)
 
 Then, when one of the students will finish with the first section, a golden jumping key will appear for him/her. Clicking that key will send a request to the course's manager in the form of a Activity. The Course's resnponsible could then accept the access to the content
 
-![backend configuration](https://github.com/JDavidMoreno/elearning_slides_access/blob/main/.github/images/request.png)
+![backend configuration](https://github.com/JDavidMoreno/elearning_slides_access/blob/master/.github/images/request.png)
 
-![backend configuration](https://github.com/JDavidMoreno/elearning_slides_access/blob/main/.github/images/request-2.png)
+![backend configuration](https://github.com/JDavidMoreno/elearning_slides_access/blob/master/.github/images/request-2.png)
 
 ## License
 
